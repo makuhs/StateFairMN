@@ -15,6 +15,7 @@ The Minnesota State Fair is one of the largest and highest-attended fairs in the
 ### Data
 
 **Daily Attendance Counts**
+
 Daily attendance counts along with high and low temperature. Data spans 1975 - 2024 (all years since the fair begain it's 12-day length)
 
 |variable            |description         |
@@ -32,6 +33,7 @@ Daily attendance counts along with high and low temperature. Data spans 1975 - 2
 
 
 **Total Attendance Counts** 
+
 Total attendance count at the end of the fair. Data spans 1887 - 2024. 
 
 |variable            |description         |
