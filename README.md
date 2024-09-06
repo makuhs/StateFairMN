@@ -49,12 +49,12 @@ Data sourcing and reference information can be found [here](https://github.com/m
 ### Figures
 
 #### Minnesota State Fair All-Time Attendance (1887-2024)
-<img src="https://github.com/makuhs/StateFairMN/blob/main/staticFigs/totalAttendance.jpeg" width="850">
+<img src="https://github.com/makuhs/StateFairMN/blob/main/staticFigs/totalAttendance.jpeg" width="1000">
 
 #### 2024 Daily Attendance 
 <img src="https://github.com/makuhs/StateFairMN/blob/main/staticFigs/dailyAttendance.jpeg" width="850">
 
-## [Explore this data across other years here](https://makuhs.github.io/StateFairMN/)
+### [Explore this data across other years here](https://makuhs.github.io/StateFairMN/)
 
 
-
+<h1 align="center">[Explore this data across other years here](https://makuhs.github.io/StateFairMN/)</h1>
