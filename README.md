@@ -4,4 +4,6 @@ Explore daily attendance, weather, and all-time records for the last 50 years of
 
 **[CLICK HERE!](https://makuhs.github.io/StateFairMN/)**
 
+<img src="https://github.com/makuhs/Personal-Projects/blob/main/mnStateFair/dailyAttendance.jpeg" width="850">
+
 Data sourcing and reference information can be found [here](https://github.com/makuhs/Personal-Projects/blob/main/mnStateFair/readme.txt)
