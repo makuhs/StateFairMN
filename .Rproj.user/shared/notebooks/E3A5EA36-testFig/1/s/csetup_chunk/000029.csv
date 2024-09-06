@@ -1,0 +1,5 @@
+"0","dailyCount <- read.csv(""~/Mobile Documents/com~apple~CloudDocs/CurrentSchool/TidyTuesday/StateFairMN/StateFairMN/data/dailyCounts.csv"")%>%
+  na.omit()
+"
+"2","Error in file(file, ""rt"") : cannot open the connection
+"

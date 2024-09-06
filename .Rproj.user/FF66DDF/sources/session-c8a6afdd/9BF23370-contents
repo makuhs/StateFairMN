@@ -6,11 +6,11 @@
 library(tidyverse)
 library(scales)
 library(grid)
-library(ggstar)
 library(plotly)
+library(zoo)
 
 # DATA
-dailyCount <- read.csv("data/dailyCounts.csv")%>%
+dailyCount <- read.csv("StateFairMN/StateFairMN/data/dailyCounts.csv")%>%
   na.omit()
 
 # SETUP
@@ -33,19 +33,32 @@ recordCurrent <- dailyCount %>%
          rain = case_when(precip == "yes" ~ "Rain",
                           precip == "no" ~ "No rain"),
          tempRange = paste0(lowF, " - ", highF, "\n", rain))%>%
-  filter(year != 2020)
+  filter(year != 2020)%>%
+  
+  group_by(numberDay) %>%
+  arrange(year) %>% 
+  mutate(
+    pastMax = lag(cummax(attendance), default = NA),
+    rollingHigh = if_else(is.na(pastMax) | attendance > pastMax, 'yes', 'no'),
+    maxYear = if_else(is.na(pastMax) | attendance > pastMax, year, NA_integer_),
+    maxYear = zoo::na.locf(maxYear, na.rm = FALSE)
+  ) %>%
+  ungroup()%>%
+  mutate(currentHigh = case_when(rollingHigh == "yes" ~ attendance,
+                                 rollingHigh == "no" ~ pastMax),
+         attendDisp = format(attendance, big.mark  =","),
+         recordText = paste0(maxYear, ":\n", attendDisp))
+
 
 ## subset for labels
 labs <- recordCurrent %>%
   filter(year == 2024)
 
-## select trace for hover display
-traceHide <- c(0:5,7:16)
 
 ## text for labeling
 subtitle <- "Daily attendance data for all 12-day fairs (1975 to 2024)"
-subsubtitle <- "Move the slider along the bottom to explore attendance patterns by year.\nGrey zones represents the past 30-year attendance average with gold stars indicating the all-time attendance record." 
-tempPrompt <- "Hover your cursor over a data point to see weather data"
+subsubtitle <- "Move the slider along the bottom to explore daily attendance patterns by year.\nGrey zones represent a 30-year attendance average (from 1994-2024). Light blue points depict\nthe rolling attendance highs with gold stars indicating the all-time record." 
+tempPrompt <- "Hover your cursor to see weather data and rolling attendance records"
 
 
 
@@ -65,6 +78,7 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
   geom_point(data = avg, aes(numberDay, low), color = "grey85", size = 6.2)+
   
   #add points
+  geom_point(size = 3, color = "#8ab4d1", alpha=0.4, aes(y = currentHigh, frame = year, text = recordText))+
   geom_point(size = 4, color = "#5383b5", aes(frame = year, text = tempRange))+
   geom_line(size = 1.2, color = "#5383b5", aes(frame = year))+
   geom_point(aes(y= attendance + 15000, frame = year, fill = shape, color = shape, alpha=shape), 
@@ -89,27 +103,27 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
            color = "grey50")+
   
   #titles
-  annotate("rect", xmin = 0, xmax = 12.5, ymin = 298000, ymax = 400000, fill = "white")+
+  annotate("rect", xmin = 0, xmax = 12.5, ymin = 298000, ymax = 401000, fill = "white")+
   annotate("text", x = 6, y = 370000, label = "MINNESOTA STATE FAIR DAILY ATTENDANCE",
            hjust = 0.5,
            family = "Open Sans",
            fontface = "bold",
-           size = 8,
+           size = 7,
            color = "grey20")+
-  annotate("text", x = 6, y = 351000, label = subtitle,
+  annotate("text", x = 6, y = 348000, label = subtitle,
            hjust = 0.5,
            family = "Open Sans",
            size = 4,
            color = "grey30")+
-  annotate("text", x = 6, y = 323000, label = subsubtitle,
+  annotate("text", x = 6, y = 318000, label = subsubtitle,
            hjust = 0.5,
            family = "Open Sans",
-           size = 3,
+           size = 2.75,
            color = "grey50")+
   annotate("text", x = 6, y = 280500, label = tempPrompt,
            hjust = 0.5,
            family = "Open Sans",
-           size = 3.5,
+           size = 3,
            fontface = "bold",
            color = "#5383b5")+
   
@@ -132,18 +146,20 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
 plot
 
 
-# ANIMATE 
-p <- ggplotly(plot,
-              tooltip = "text") %>%
-  animation_slider(currentvalue = list(prefix = "YEAR ", font = list(color="#707070", size = 12)),
+# ANIMATE
+
+traceHide <- c(0:5, 7:17)
+
+p<- ggplotly(plot,
+         tooltip="text")%>%
+  animation_slider(currentvalue = list(prefix = "YEAR ", 
+                                       font = list(color="#707070", size = 12)),
                    font = list(size = 10, family = "Open Sans", color = "#707070"))%>%
-  animation_button(visible=FALSE)%>%
+  animation_button(visible = F)%>%
   animation_opts(
-    easing = "linear-in",
-    frame = 700,
-    transition = 150,
+    easing = "elastic",
     redraw = F)%>%
-  style(hoverinfo = "none", traces = traceHide) #warning coming from the way I set up the record stars...ignore
+   style(hoverinfo = "none", traces = traceHide)
 
 p
 
