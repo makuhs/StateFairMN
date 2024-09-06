@@ -43,7 +43,7 @@ recordCurrent <- dailyCount %>%
 labs <- recordCurrent %>%
   filter(year == 2024)
 
-traceHide <- c(0,1,2,3,4,5,7,8,9,10,11,12,13,14,15)
+traceHide <- c(0:5,7:16)
 
 subtitle <- "Daily attendance data for all 12-day fairs (1975 to 2024)"
 subsubtitle <- "Move the slider along the bottom to explore attendance patterns by year.\nGrey zones represents the past 30-year attendance average with gold stars indicating the all-time attendance record." 
@@ -100,12 +100,12 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
            fontface = "bold",
            size = 8,
            color = "grey20")+
-  annotate("text", x = 6, y = 352000, label = subtitle,
+  annotate("text", x = 6, y = 351000, label = subtitle,
            hjust = 0.5,
            family = "Open Sans",
            size = 4,
            color = "grey30")+
-  annotate("text", x = 6, y = 325000, label = subsubtitle,
+  annotate("text", x = 6, y = 323000, label = subsubtitle,
            hjust = 0.5,
            family = "Open Sans",
            size = 3,
@@ -151,13 +151,13 @@ p <- ggplotly(plot,
 ```{r include, echo = FALSE}
 htmlwidgets::saveWidget(p, "index.html")
 
-htmltools::tags$iframe(
-  src=file.path(getwd(), "index.html"),
-  width="100%",
-  height="600",
-  scrolling="no",
-  seamless="seamless",
-  frameBorder="0"
-)
+#htmltools::tags$iframe(
+ # src=file.path(getwd(), "index.html"),
+ # width="100%",
+#  height="600",
+ # scrolling="no",
+  #seamless="seamless",
+  #frameBorder="0"
+#)
 
 ```
