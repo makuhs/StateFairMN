@@ -151,13 +151,13 @@ p <- ggplotly(plot,
 ```{r include, echo = FALSE}
 htmlwidgets::saveWidget(p, "index.html")
 
-#htmltools::tags$iframe(
- # src=file.path(getwd(), "index.html"),
- # width="100%",
-#  height="600",
- # scrolling="no",
-  #seamless="seamless",
-  #frameBorder="0"
-#)
+htmltools::tags$iframe(
+src=file.path(getwd(), "index.html"),
+width="100%",
+height="600",
+scrolling="no",
+seamless="seamless",
+frameBorder="0"
+)
 
 ```
