@@ -46,7 +46,8 @@ labs <- recordCurrent %>%
 traceHide <- c(0,1,2,3,4,5,7,8,9,10,11,12,13,14,15)
 
 subtitle <- "Daily attendance data for all 12-day fairs (1975 to 2024)"
-subsubtitle <- "Move the slider along the bottom to explore attendance patterns by year.\nGrey zones represents the past 30-year attendance average with gold stars indicating the all-time attendance record.\nHover your cursor over a particular data point to see the high and low temperature of that day." 
+subsubtitle <- "Move the slider along the bottom to explore attendance patterns by year.\nGrey zones represents the past 30-year attendance average with gold stars indicating the all-time attendance record." 
+tempPrompt <- "Hover your cursor over a data point to see weather data"
          
 
 
@@ -89,6 +90,8 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
            size = 3,
            color = "grey50")+
   
+  
+  
   #titles
   annotate("rect", xmin = 0, xmax = 12.5, ymin = 298000, ymax = 400000, fill = "white")+
   annotate("text", x = 6, y = 370000, label = "MINNESOTA STATE FAIR DAILY ATTENDANCE",
@@ -107,6 +110,12 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
            family = "Open Sans",
            size = 3,
            color = "grey50")+
+    annotate("text", x = 6, y = 280500, label = tempPrompt,
+           hjust = 0.5,
+           family = "Open Sans",
+           size = 3.5,
+           fontface = "bold",
+           color = "#5383b5")+
 
   #plot aesthetics 
   coord_cartesian(clip = "off",
