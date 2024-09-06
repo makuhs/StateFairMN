@@ -12,7 +12,6 @@ library(scales)
 library(grid)
 library(ggstar)
 library(plotly)
-library(Unicode)
 
 # Data
 
