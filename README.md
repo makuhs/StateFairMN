@@ -4,7 +4,7 @@ Explore daily attendance, weather, and all-time records for the last 50 years of
 
 **[CLICK HERE!](https://makuhs.github.io/StateFairMN/)**
 
-<span style="font-size:0.5em;">**[CLICK HERE!](https://makuhs.github.io/StateFairMN/)**</span>
+<span style="font-size:5em;">**[CLICK HERE!](https://makuhs.github.io/StateFairMN/)**</span>
 
 <img src="" width="850">
 
