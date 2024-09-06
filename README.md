@@ -54,7 +54,4 @@ Data sourcing and reference information can be found [here](https://github.com/m
 #### 2024 Daily Attendance 
 <img src="https://github.com/makuhs/StateFairMN/blob/main/staticFigs/dailyAttendance.jpeg" width="850">
 
-### [Explore this data across other years here](https://makuhs.github.io/StateFairMN/)
-
-
-<h1 align="center">[Explore this data across other years here](https://makuhs.github.io/StateFairMN/)</h1>
+<h4 align="center">Explore this data across other years here https://makuhs.github.io/StateFairMN/</h1>
