@@ -1,5 +1,5 @@
 ---
-title: "figure"
+title: "Minnesota State Fair Daily Attendance"
 author: "Molly Kuhs"
 date: "`r Sys.Date()`"
 output: github_document
@@ -95,17 +95,17 @@ plot<- ggplot(recordCurrent, aes(numberDay, attendance))+
            hjust = 0.5,
            family = "Open Sans",
            fontface = "bold",
-           size = 6.6,
+           size = 8,
            color = "grey20")+
   annotate("text", x = 6, y = 352000, label = subtitle,
            hjust = 0.5,
            family = "Open Sans",
-           size = 3,
+           size = 4,
            color = "grey30")+
   annotate("text", x = 6, y = 325000, label = subsubtitle,
            hjust = 0.5,
            family = "Open Sans",
-           size = 2.45,
+           size = 3,
            color = "grey50")+
 
   #plot aesthetics 
