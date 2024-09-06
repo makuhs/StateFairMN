@@ -1,6 +1,9 @@
-figure
-================
-Molly Kuhs
-2024-09-06
+# Test
+
+blah blah 
+
+## graph
+
+oo lala
 
 [link to fig](https://github.com/makuhs/StateFairMN/blob/main/docs/index.html)
