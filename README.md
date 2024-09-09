@@ -7,7 +7,7 @@ Explore daily attendance, weather, and all-time records for the last (almost) 50
 ---
 ### Overview
 
-This repository contains two attendance-based datasets I compiled to build some static figures and an iteractive/animated plot. Datasets were last updated September 4th, 2024. I will try to make sure they get updated post-fair in 2025. 
+This repository contains two attendance-based datasets compiled to build some static figures and an iteractive/animated plot. Datasets were last updated September 4th, 2024. I will try to make sure they get updated post-fair in 2025. 
 
 The Minnesota State Fair is one of the largest and highest-attended fairs in the nation with well over 2 million visitors across 12 days. You can learn more about the 'Great Minnesota Get Together' [here](https://en.wikipedia.org/wiki/Minnesota_State_Fair) 
 
@@ -25,8 +25,8 @@ Daily attendance counts along with high and low temperature. Data spans 1975 - 2
 |year                | Year   
 |attendance          | Daily attendance count
 |annualTot           | Annual attendance count (summed daily counts by year)
-|tempHigh            | Daily high temperature (F)
-|tempLow             | Daily low temperature (L)
+|tempHigh            | Daily high temperature (°F)
+|tempLow             | Daily low temperature (°F)
 |precip              | Presence of rail > 0.05in total (y/n)
 |ticketPrice         | Day-of ticket price ($)
 |recordDai...        | Record daily attendance count of all-time (updated in 2024)
